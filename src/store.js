@@ -32,7 +32,7 @@ const productsReducer = (state = [], action)=> {
       break;
     case CREATE_PRODUCT:
       state = [...state, action.product ];
-      greak;
+      break;
   }
   return state;
 }
@@ -51,7 +51,7 @@ const loadProducts = ()=> {
 
 const createProduct = (product)=> {
   return (dispatch)=> {
-    return axios.post('/api/products')
+    return axios.post('/api/products', product)
       .then(response => response.data)
       .then(product => dispatch(_createProduct(product)));
   }
