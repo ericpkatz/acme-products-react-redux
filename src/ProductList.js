@@ -9,20 +9,30 @@ const ProductList = ({ products, deleteProduct, createProduct })=> {
     <button onClick={ createProduct }>Create Product</button>
   <ul>
     {
-      products.map( product => <li key={ product.id}>{ product.name } { product.rating }<button onClick={()=> deleteProduct(product)}>x</button></li>)
+      products.map( product => {
+        return (
+        <li 
+          style={{ color: product.rating > 7 ? 'green': ''}}
+          key={ product.id}>{ product.name } { product.rating }<button onClick={()=> deleteProduct(product)}>x</button></li>
+        )
+      })
     }
   </ul>
     </div>
   );
 };
 
-const mapStateToProps = ({ products })=> ({ products });
+const mapStateToProps = ({ products })=> {
+  let sorted = [...products];
+  sorted.sort((a, b)=> a.rating > b.rating ? 1 : -1);
+  return { products: sorted }
+};
 const mapDispatchToProps = (dispatch)=> {
   return {
     deleteProduct: (product)=> dispatch(deleteProduct(product)),
     createProduct: ()=> dispatch(createProduct({
-      name: faker.commerce.product(),
-      rating: faker.random.number()
+      name: `${faker.commerce.product()} ${faker.commerce.productAdjective()}`,
+      rating: faker.random.number(10)
     }))
   }
 };

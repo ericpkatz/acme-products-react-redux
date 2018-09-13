@@ -24,7 +24,7 @@ class App extends Component{
         <div>
         <Route component={ Nav } />
         <Route exact path='/products' component={ ProductList } />
-        <Route path='/products/:id' render={ ({ match })=> <Product id={ match.params.id*1}/> } />
+        <Route path='/products/:id' render={ ({ history, match })=> <Product id={ match.params.id*1} history={ history }/> } />
         </div>
       </Router>
       </Provider>

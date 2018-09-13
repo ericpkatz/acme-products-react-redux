@@ -57,11 +57,12 @@ const createProduct = (product)=> {
   }
 }
 
-const deleteProduct = (product)=> {
+const deleteProduct = (product, history)=> {
   return (dispatch)=> {
     return axios.delete(`/api/products/${product.id}`)
       .then(response => response.data)
-      .then(() => dispatch(_deleteProduct(product)));
+      .then(() => dispatch(_deleteProduct(product)))
+      .then(()=> history && history.push('/products'));
   }
 }
 
