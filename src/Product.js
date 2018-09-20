@@ -4,10 +4,13 @@ import { deleteProduct } from './store';
 
 const Product = ({ product, deleteProduct})=> {
   if(!product){
-    return null
+    return null;
   }
   return (
-    <div>{ product.name } <button onClick={()=> deleteProduct(product)}>x</button></div>
+    <div>
+      { product.name } 
+      <button onClick={()=> deleteProduct(product)}>x</button>
+    </div>
   );
 };
 

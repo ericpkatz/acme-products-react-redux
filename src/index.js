@@ -10,9 +10,6 @@ import Nav from './Nav';
 import ProductList from './ProductList';
 import Product from './Product';
 
-store.dispatch(loadProducts())
-  .then(()=> {});
-
 class App extends Component{
   componentDidMount(){
     store.dispatch(loadProducts());

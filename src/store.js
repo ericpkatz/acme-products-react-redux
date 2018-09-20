@@ -31,7 +31,7 @@ const productsReducer = (state = [], action)=> {
       state = state.filter( product => product.id !== action.product.id);
       break;
     case CREATE_PRODUCT:
-      state = [...state, action.product ];
+      state = [...state, action.product ].sort((a, b)=> a.rating > b.rating ? -1 : 1);
       break;
   }
   return state;

@@ -23,9 +23,7 @@ const ProductList = ({ products, deleteProduct, createProduct })=> {
 };
 
 const mapStateToProps = ({ products })=> {
-  let sorted = [...products];
-  sorted.sort((a, b)=> a.rating > b.rating ? 1 : -1);
-  return { products: sorted }
+  return { products }
 };
 const mapDispatchToProps = (dispatch)=> {
   return {

@@ -16,7 +16,9 @@ const index = path.join(__dirname, 'index.html');
 app.get('/', (req, res)=> res.sendFile(index));
 
 app.get('/api/products', (req, res, next)=> {
-  Product.findAll()
+  Product.findAll({
+    order: [['rating', 'DESC']]
+  })
     .then( products => res.send(products))
     .catch(next);
 });
